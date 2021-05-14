@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <script src="jquery-3.6.0.js"></script>
+    <script>
+        $(document).ready(() => {  // we have to ready the document for it to work
+            $(':button').click(() => {
+                alert('clicked')
+            })
+        })</script> -->
+    <style>
+        .hey {
+            color: aquamarine;
+        }
+
+        /* .app {
+            background-color: blueviolet;
+        } */
+        #box {
+            background-color: #333;
+            color: #fff;
+            width: 500px;
+            height: 90px;
+            padding: 40px;
+            text-align: center;
+        }
+
+        #box2 {
+            background: red;
+            width: 100px;
+            height: 90px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <ul>
+        <li id="app">heyy</li>
+        <li class="app">hey</li>
+        <li>hey</li>
+    </ul>
+
+    <input type="button" value="button"><input type="submit"><input type="text" name="name">
+    <h1>Lorem ipsum dolor, sit amet consectetur adipisicing elit. A ut nobis laudantium sequi? Rem optio nostrum
+        possimus nulla voluptates odit maxime cum autem similique. Omnis praesentium magni architecto quasi nesciunt.
+    </h1>
+    <h1 id="chords"></h1>
+    <a href="http://google.com">google</a>
+
+    <form id="form">
+        <select id="gen">
+            <option>
+                male
+            </option>
+            <option>female</option>
+        </select>
+        <input type="submit">
+    </form>
+    <div id="mydiv"></div>
+
+    <!-- TOPIC 4 ANIMATION -->
+    <button id="fade_in">fade in</button>
+    <button id="fade_out">fade out</button>
+    <button id="toggle">Toggle</button>
+    <button id="stop">stop</button>
+
+    <div id="box">
+        <h1>hello </h1>
+    </div>
+
+    <button id="slide_up">slide up</button>
+    <button id="slide_down">slide down</button>
+    <button id="slide_tog">Toggle</button>
+
+    <button id="left">move left </button>
+    <button id="right">move right</button>
+    <button id="around">arround</button>
+    <div id="box2">
+    </div>
+
+    <!-- AJAX -->
+    <div id="load"></div>
+
+    <form id="su" action="http://jsonplaceholder.typicode.com/posts">
+        <input id="tes" type="text">
+        <button id="sub">dubmit</button>
+    </form>
+
+    <script src="jquery-3.6.0.js"></script>
+    <script>
+        // jQuery('ul li').css('color', 'red')
+        // jQuery('ul li').addClass('hey')
+        // $('ul li').addClass('hey')
+        // $('h1').hide()
+        // $('ul li#app').hide()
+        // $('ul li.app').hide()
+        // $('ul li:last').css('color', 'red')
+        // $('ul li:odd').css('background-color', 'yellow')
+        // $('ul li:even').css('background-color', 'red')
+        // $('.app').hide()
+        // $('ul li:nth-child(2n').css('list-style', 'none')
+        // $(':button').hide() //for type
+        // $('[href]').css('color', 'red') //for attributes
+        // $('a[href="http://google.com"]').css('color', 'red') //for attributes value
+        // $('*').hide()
+
+        // TOPIC 2 EVENTS
+        // $(':button').click(() => {
+        //     alert('clicked')
+        // })
+
+        // $(':button').click(() => {
+        //     $('h1').hide()
+        // })
+
+        // $(':submit').click(() => {
+        //     $('h1').show()
+        // })
+
+        // $(':submit').click(() => {
+        //     $('h1').toggle()
+        // }) // same button hide and show
+
+        // $(':submit').dblclick(() => {
+        //     $('h1').toggle()
+        // })
+        // $(':submit').hover(() => {
+        //     $('h1').toggle()
+        // })
+
+        // $(':submit').mousedown(() => {
+        //     $('h1').toggle()
+        // })
+
+        // $(':submit').mouseup(() => {
+        //     $('h1').toggle()
+        // })
+
+        // $(':submit').click((e) => {
+        //     console.log(e.currentTarget.checked)
+        //     alert(e.currentTarget.outerHTML)
+        // })
+
+        // $(':submit').mousemove((e) => {
+        //     console.log(e.clientX + e.clientY)
+        // })
+
+        // $(document).mousemove((e) => {
+        //     console.log(e.clientX + e.clientY)
+        // })
+
+        // $(document).mousemove((e) => {
+        //     $('#chords').html('X: ' + e.clientX + ' Y: ' + e.clientY)
+        // })
+
+        // $('input').focus(() => {
+        //     console.log('blaj')
+        //     $(':text').css('background-color', 'red')
+        // })
+
+        // $('input').blur(() => {
+        //     $(this).css('background-color', 'white')
+        // })
+        // $("input").blur(function () {
+        //     $(this).css('background-color', 'white')
+        // });
+
+        // $('input').keyup((e) => {
+        //     console.log(e.target.value)
+        // })
+
+        // $('select#gen').change((e) => {
+        //     console.log(e.target.value)
+        // })
+
+        // $('#form').submit((e) => {
+        //     e.preventDefault()
+        //     var name = $('select#gen').val()
+        //     console.log(name)
+        // })
+
+        //TOPIC 3 DOM MANUPULATION
+        // $(document).ready(() => {
+        //     $('h1').css({ color: 'red', background: 'black' })
+        // $('#app').addClass('app')
+        // $('#app').removeClass('app')
+        // $(':button').click(() => {
+        //     $('#app').toggleClass('app')
+        // })
+
+        // $('#mydiv').html('<h1>hello</h1>')
+        // $('ul').append('<li>hello</li>')
+        // $('ul').prepend('<li>helloo</li>')
+        // $('#app').appendTo('.app')
+        // $('#app').prependTo('.app')
+        // $('ul').before('<h2>kile</h2>')
+        // $('ul').after('<h2>kile</h2>')
+        // $('ul').detach() //completely remove attribbut
+        // $('ul').empty() // only inside compo are remove
+
+        // $('a').attr('target', '_blank')
+        // alert($('a').attr('href'))
+        // $('a').removeAttr('target')
+
+        // $('input').wrapAll('<h2>')
+
+        // $(':text').keyup((e) => {
+        //     var code = e.which
+        //     if (code === 13) {
+        //         e.preventDefault()
+        //         $('ul').append('<li>' + e.target.value + '</li>')
+        //     }
+        // })
+
+        // var arr = ['brad', 'blah']
+        // $.each(arr, (i, val) => {
+        //     console.log(i, val)
+        //     $('ul').append('<li>' + i + val + '</li>')
+        // })
+
+        //     var newarr = $('ul li ').toArray()
+        //     $.each(newarr, (i, val) => {
+        //         console.log(val.innerText)
+        //     })
+
+        // })
+
+        //TOPIC 4 EFFECTS AND ANIMATION
+        // $('#fade_out').click(function () {
+        //     $('#box').fadeOut(300, () => {
+        //         $('#fade_out').text('Gone')
+        //     })
+        // })
+        // $('#fade_in').click(function () {
+        //     $('#box').fadeIn(300, () => {
+        //         $('#fade_in').text('back')
+        //     })
+        // })
+        // $('#toggle').click(function () {
+        //     $('#box').fadeToggle(300, () => {
+        //         $('#fade_in').text('back')
+        //     })
+        // })
+
+        // $('#slide_down').click(function () {
+        //     $('#box').slideDown(300, () => {
+        //     })
+        // })
+
+        // $('#slide_up').click(function () {
+        //     $('#box').slideUp(3000, () => {
+        //     })
+        // })
+        // $('#stop').click(function () {
+        //     $('#box').stop()
+        // })
+
+        // $('#slide_tog').click(function () {
+        //     $('#box').slideToggle(300, () => {
+        //     })
+        // })
+        // $(document).ready(() => {
+        //     $('#right').click(function () {
+        //         $('#box2').animate({
+        //             left: 10
+        //         })
+        //     })
+        // })
+
+
+        //TOPIC 5 AJAX
+        // $('#load').load('testq2.html', (responseTxt, statusTxt, xhr) => {
+        //     if (statusTxt == "success") {
+        //         alert("success")
+        //     } else if (statusTxt == "error") {
+        //         alert(xhr.status + xhr.statusText)
+        //     }
+        // })
+
+        // $.get('test.html', (data) => {
+        //     $('#load').html(data)
+        // })
+
+        // $.getJSON('users.json', (data) => {
+        //     $.each(data, (i, user) => {
+        //         $('ul').append('<li>' + user.first + '</li>')
+        //     })
+        // })
+
+        // $.ajax({
+        //     method: 'GET',
+        //     url: 'http://jsonplaceholder.typicode.com/posts',
+        //     dataType: 'json'
+        // }).done((data) => {
+        //     console.log(data)
+        //     // $.map(data, (post, i) => {
+        //     //     $('#load').append('<h3>' + post.title + '</h3>')
+        //     // })
+        // })
+
+        // $('#su').submit(function (e) {
+        //     e.preventDefault()
+        //     var title = $('#tes').val()
+        //     var url = $(this).attr('action')
+        //     $.post(url, {
+        //         title: title
+        //     }).done(function (data) {
+        //         console.log(data)
+        //     })
+        // })
+
+
+        // console.log(lis)
+    </script>
+</body>
+
+</html>
